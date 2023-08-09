@@ -1,4 +1,4 @@
-if not game:IsLoaded() then game.Loaded:Wait() end
+task.wait(0.1) if not game:IsLoaded() then game.Loaded:Wait() end
 
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
 Settings = {ServerHops = 5, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
