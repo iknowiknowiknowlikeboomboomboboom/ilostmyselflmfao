@@ -150,8 +150,8 @@ coroutine.resume(coroutine.create(function()
         for _,z in next, Players:GetPlayers() do
             if z~=LocalPlayer then
                 for i=1,30 do
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(".gg/shhh || BOOST FOR WHITELIST || KRONEW || TANA IS A LOSER", "All")
-                wait(2.15)
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(".gg/shhh || BOOST FOR WHITELIST || WE UP NOW || THIS BOT IS USER GENERATED NOT KRONE", "All")
+                wait(1)
             end
         end
         end
@@ -163,37 +163,11 @@ for i = 1, 160 do
     end
     wait(.65)
 end
-local GUIDs = {}
-local maxPlayers = 0
-local Http =
-    game:GetService("HttpService"):JSONDecode(
-    game:HttpGet(
-        "https://games.roblox.com/v1/games/" ..
-            game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100&cursor="
-    )
-)
-for i = 1, 100 do
-    for i, v in next, Http.data do
-        if v.playing ~= v.maxPlayers and v.id ~= game.JobId then
-            maxPlayers = v.maxPlayers
-            table.insert(GUIDs, {id = v.id, users = v.playing})
-        end
-    end
-    if Http.nextPageCursor ~= null then
-        Http =
-            game:GetService("HttpService"):JSONDecode(
-            game:HttpGet(
-                "https://games.roblox.com/v1/games/"
-                ..
-                game.PlaceId
-                ..
-                "/servers/Public?sortOrder=Asc&limit=100&cursor="
-                ..
-                Http.nextPageCursor
-            )
-        )
-    else
-        break
-    end
-end
-repeat wait() game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, GUIDs[math.random(1, 3)].id, LocalPlayer) until not LocalPlayer
+local function ServerHop() local success, response = pcall(function() return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")) end)
+
+    if success and response and response.data then local AvailableServers = response.data
+        while true do wait() local RandomServer = AvailableServers[math.random(#AvailableServers)]
+            if RandomServer.playing < RandomServer.maxPlayers - 1 and RandomServer.playing > 13 and RandomServer.id ~= game.JobId then game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, RandomServer.id) end end
+    else warn("Failed to retrieve server list. Retrying...") ServerHop() end end
+local function hop() while true do local success, errorMessage = pcall(ServerHop) if not success then warn("Server hop error: " .. errorMessage) end wait() end end
+hop()
