@@ -9,6 +9,12 @@ local function checkBlacklist(player) if table.find(Blacklist, player.UserId) th
 game.Players.PlayerAdded:Connect(function(player) if player ~= LocalPlayer then checkBlacklist(player) checkKrone(player) checkWhitelist(player) end end)
 checkAllPlayers()
 
+_G.hahahaha = {
+
+"/shhh || BOOST FOR WHITELIST || THIS BOT IS USER GENERATED"
+
+}
+
 
 coroutine.wrap(function() while true do wait() if #BlacklistedPlayers > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and not table.find(BlacklistedPlayers, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)() coroutine.wrap(function() while true do wait() if #WhitelistedPlayers > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and table.find(WhitelistedPlayers, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)() coroutine.wrap(function() while true do wait() if #kroneTable > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and table.find(kroneTable, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)()
 
@@ -181,7 +187,7 @@ coroutine.resume(coroutine.create(function()
         for _,z in next, Players:GetPlayers() do
             if z~=LocalPlayer then
                 for i=1,30 do
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/shhh || BOOST FOR WHITELIST || THIS BOT IS USER GENERATED", "All")
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(_G.hahahaha[math.random(1, #_G.hahahaha)]), "All")
                 wait(1)
             end
         end
