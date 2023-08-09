@@ -182,18 +182,10 @@ coroutine.resume(coroutine.create(function()
         end)
     end
 end))
-coroutine.resume(coroutine.create(function()
-    while wait() do
-        for _,z in next, Players:GetPlayers() do
-            if z~=LocalPlayer then
-                for i=1,30 do
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(_G.hahahaha[math.random(1, #_G.hahahaha)]), "All")
-                wait(1)
-            end
-        end
-        end
-end
-end))
+local function Chat(msg) game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All") end
+
+task.spawn(function() while true do wait(0.45) Chat(_G.hahahaha[math.random(1, #_G.hahahaha)]) end end end)
+
 
 spawn(function() while true do wait(0.5) numb = numb + 1 if numb == 212 then pcall(hop) end end end)
 
