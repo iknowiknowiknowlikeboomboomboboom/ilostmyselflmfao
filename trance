@@ -14,6 +14,29 @@ checkAllPlayers()
 
 coroutine.wrap(function() while true do wait() if #BlacklistedPlayers > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and not table.find(BlacklistedPlayers, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)() coroutine.wrap(function() while true do wait() if #WhitelistedPlayers > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and table.find(WhitelistedPlayers, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)() coroutine.wrap(function() while true do wait() if #kroneTable > 0 then for _, player in ipairs(game.Players:GetPlayers()) do if player ~= LocalPlayer and table.find(kroneTable, player) then player:Destroy() if player.Character then player.Character:Destroy() wait(0.1) end end end end end end)()
 
+local function ServerHop()
+    local success, response = pcall(function()
+        return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"))
+    end)
+
+    if success and response and response.data then
+        local AvailableServers = response.data
+
+        while true do
+            wait()
+            local RandomServer = AvailableServers[math.random(#AvailableServers)]
+            if RandomServer.playing < RandomServer.maxPlayers - 1 and RandomServer.playing > 12 and RandomServer.id ~= game.JobId then
+                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, RandomServer.id)
+            end
+        end
+    else
+        warn("Failed to retrieve server list. Retrying...")
+        ServerHop()
+    end
+end
+
+local function hop() while true do local success, errorMessage = pcall(ServerHop) if not success then warn("Server hop error: " .. errorMessage) end wait() end end
+
 
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -21,7 +44,7 @@ local rservice = game:GetService("RunService")
 
 
 local CF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-
+local numb = 0
 local function shhhlol(TargetPlayer)
     local Character = LocalPlayer.Character
     local Humanoid = Character:FindFirstChildOfClass("Humanoid")
@@ -157,17 +180,6 @@ coroutine.resume(coroutine.create(function()
         end
 end
 end))
-for i = 1, 160 do
-    if #Players:GetPlayers() <= 4 then
-        break
-    end
-    wait(.65)
-end
-local function ServerHop() local success, response = pcall(function() return game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")) end)
 
-    if success and response and response.data then local AvailableServers = response.data
-        while true do wait() local RandomServer = AvailableServers[math.random(#AvailableServers)]
-            if RandomServer.playing < RandomServer.maxPlayers - 1 and RandomServer.playing > 13 and RandomServer.id ~= game.JobId then game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, RandomServer.id) end end
-    else warn("Failed to retrieve server list. Retrying...") ServerHop() end end
-local function hop() while true do local success, errorMessage = pcall(ServerHop) if not success then warn("Server hop error: " .. errorMessage) end wait() end end
-hop()
+spawn(function() while true do wait(0.5) numb = numb + 1 if numb == 220 then pcall(hop) end end end)
+
