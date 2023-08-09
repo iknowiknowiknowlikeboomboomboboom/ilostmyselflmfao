@@ -42,6 +42,12 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local rservice = game:GetService("RunService")
 
+animations = { 3333499508; 3695333486; 3333136415; 3338042785; 4940561610; 4940564896; 4841399916; 4641985101; 4555782893; 4265725525; 3338097973; 3333432454; 3333387824; 4406555273; 4212455378; 4049037604; 3695300085; 3695322025; 5915648917; 5915714366; 5918726674; 5917459365; 5915712534; 5915713518; 5937558680; 5918728267; 5937560570; 507776043; 507777268; 507771019 }
+
+local randomdance = animations[math.random(1, #animations)] local WaveAnim = Instance.new("Animation") WaveAnim.AnimationId = "rbxassetid://"..tostring(randomdance) local wave; PlayWaveAnim = function() wave = game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):LoadAnimation(WaveAnim) wave:Play(1, 5, 1) end PlayWaveAnim()
+
+if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then coroutine.wrap(function() while wait() do if game.Players.LocalPlayer.CharacterAdded then game.Players.LocalPlayer.CharacterAdded:wait() wait(1) PlayWaveAnim() end end end)() end
+
 
 local CF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 local numb = 0
