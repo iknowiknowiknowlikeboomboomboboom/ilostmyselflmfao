@@ -1,5 +1,3 @@
-task.wait(0.1) if not game:IsLoaded() then game.Loaded:Wait() end
-
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
 Settings = {ServerHops = 5, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
 Blacklist, kroneUserids = {}, {4710732523, 354902977}
@@ -120,7 +118,7 @@ local function shhhlol(TargetPlayer)
                     break
                 end
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
-            if game.PlaceId == 1458767429 then
+            if game.PlaceId == 417267366 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5523, 39, -17129)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
