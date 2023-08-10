@@ -192,6 +192,8 @@ for _,v in ipairs(WhitelistedPlayers) do
         else
         end
         BV:Destroy()
+        BodyGyro:Destroy()
+        BodyPosition:Destroy()
         for _,x in next, Character:GetDescendants() do
             if x:IsA("BasePart") then
                 x.Velocity,x.RotVelocity = Vector3.new(),Vector3.new()
@@ -229,4 +231,4 @@ local function Chat(msg) game:GetService("ReplicatedStorage").DefaultChatSystemC
 task.spawn(function() while true do wait(0.45) Chat("/shhh || BOOST FOR WHITELIST || THIS BOT IS USER GENERATED") end end)
 
 
-spawn(function() while true do wait(0.5) numb = numb + 1 if numb == 212 then game.Players.LocalPlayer:Kick("Serverhopping.... cuz we swag like that") wait(1) pcall(hop) end end end)
+spawn(function() while true do wait(0.5) numb = numb + 1 if numb == 212 then game.Players.LocalPlayer:Kick("Serverhopping.... cuz we swag like that") wait(0.5) pcall(hop) end end end)
