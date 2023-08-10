@@ -170,13 +170,13 @@ for _,v in ipairs(WhitelistedPlayers) do
 
         local BodyGyro = Instance.new("BodyGyro")
         BodyGyro.CFrame = CFrame.new(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position)
-        BodyGyro.D = 8e8
+        BodyGyro.D = 9e8
         BodyGyro.MaxTorque = Vector3.new(-9e9, 9e9, -9e9)
         BodyGyro.P = -9e9
         local BodyPosition = Instance.new("BodyPosition")
 
         BodyPosition.Position = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
-        BodyPosition.D = 8e8
+        BodyPosition.D = 9e8
         BodyPosition.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
         BodyPosition.P = -9e9
 
