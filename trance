@@ -126,7 +126,7 @@ for _,v in ipairs(WhitelistedPlayers) do
             RootPart.RotVelocity = Vector3.new(9e8,9e8,9e8)
         end
         local function wtf(comkid)
-            local TimeToWait = 0.05
+            local TimeToWait = 0.134
             local Time = tick()
             local Angle = 0
         
