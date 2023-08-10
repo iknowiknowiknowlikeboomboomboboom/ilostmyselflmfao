@@ -1,4 +1,4 @@
-repeat task.wait()
+ repeat task.wait()
     if game.Players.LocalPlayer and not game.Players.LocalPlayer.Character then
         repeat
             task.wait()
@@ -129,7 +129,12 @@ for _,v in ipairs(WhitelistedPlayers) do
             local TimeToWait = 0.1
             local Time = tick()
             local Angle = 0
-            
+        
+        Att1 = Instance.new("Attachment", RootPart)
+        Att2 = Instance.new("Attachment", sorry)
+
+
+
             repeat
                 if RootPart and so then
                     if comkid.Velocity.Magnitude < 30 then
@@ -167,15 +172,22 @@ for _,v in ipairs(WhitelistedPlayers) do
 
         local BodyGyro = Instance.new("BodyGyro")
         BodyGyro.CFrame = CFrame.new(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position)
-        BodyGyro.D = -8e8
+        BodyGyro.D = 8e8
         BodyGyro.MaxTorque = Vector3.new(-9e9, 9e9, -9e9)
         BodyGyro.P = 9e9
         local BodyPosition = Instance.new("BodyPosition")
 
         BodyPosition.Position = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
-        BodyPosition.D = -8e8
+        BodyPosition.D = 8e8
         BodyPosition.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
         BodyPosition.P = 9e9
+
+        local LineForce = Instance.new("LineForce")
+        LineForce.Attachment0 = Att1; LineForce.Attachment1 = Att2
+        LineForce.ApplyAtCenterOfMass = true
+        LineForce.InverseSquareLaw = false
+        LineForce.Magnitude = 2e7
+        LineForce.MaxForce = 9e9
 
         if sorry and please then
             if (sorry.CFrame.p - please.CFrame.p).Magnitude > 5 then
