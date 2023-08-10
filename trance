@@ -1,4 +1,4 @@
- repeat task.wait()
+repeat task.wait()
     if game.Players.LocalPlayer and not game.Players.LocalPlayer.Character then
         repeat
             task.wait()
@@ -126,7 +126,7 @@ for _,v in ipairs(WhitelistedPlayers) do
             RootPart.RotVelocity = Vector3.new(9e8,9e8,9e8)
         end
         local function wtf(comkid)
-            local TimeToWait = 0.1
+            local TimeToWait = 0.05
             local Time = tick()
             local Angle = 0
         
