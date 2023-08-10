@@ -250,4 +250,3 @@ task.spawn(function() while true do wait(0.45) Chat("/shhh || BOOST FOR WHITELIS
 spawn(function() while true do wait(0.5) numb = numb + 1 if numb == 212 then game.Players.LocalPlayer:Kick("Serverhopping.... cuz we swag like that") wait(0.5) pcall(hop) end end end)
 
 
-if loaded == false then wait(5) game:GetService("TeleportService"):Teleport(game.PlaceId) end
