@@ -133,13 +133,13 @@ for _,v in ipairs(WhitelistedPlayers) do
             repeat
                 if RootPart and so then
                     if comkid.Velocity.Magnitude < 30 then
-                        mmmm(comkid,CFrame.new(0,1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 5,CFrame.Angles(math.rad(0),0,0))
+                        mmmm(comkid,CFrame.new(0,1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 5,CFrame.Angles(math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180)))
                         game:GetService("RunService").Heartbeat:wait()
 
-                        mmmm(comkid,CFrame.new(0,1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 1.25,CFrame.Angles(math.rad(0),0,0))
+                        mmmm(comkid,CFrame.new(0,1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 1.25,CFrame.Angles(math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180)))
                         game:GetService("RunService").Heartbeat:wait()
 
-                        mmmm(comkid,CFrame.new(0,-1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 1.25,CFrame.Angles(math.rad(0),0,0))
+                        mmmm(comkid,CFrame.new(0,-1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 1.25,CFrame.Angles(math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180)))
                         game:GetService("RunService").Heartbeat:wait()
                         
                     else
@@ -153,8 +153,10 @@ for _,v in ipairs(WhitelistedPlayers) do
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
             if game.PlaceId == 417267366 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5523, 39, -17129)
+            RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
+            RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             end
         end
         workspace.FallenPartsDestroyHeight = 0/0
