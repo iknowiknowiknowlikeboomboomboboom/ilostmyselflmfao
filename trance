@@ -8,8 +8,6 @@ repeat task.wait()
     end
 until true
 
-local loaded = false
-
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
 Settings = {ServerHops = 5, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
 Blacklist, kroneUserids = {}, {4710732523, 354902977}
@@ -85,7 +83,6 @@ for _,v in ipairs(WhitelistedPlayers) do
     end;
 
 
-    loaded = true
     local Character = LocalPlayer.Character
     local Humanoid = Character:FindFirstChildOfClass("Humanoid")
     local RootPart = Humanoid.RootPart
