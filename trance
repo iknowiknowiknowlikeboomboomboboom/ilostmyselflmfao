@@ -142,10 +142,8 @@ for _,v in ipairs(WhitelistedPlayers) do
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
             if game.PlaceId == 417267366 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5523, 39, -17129)
-            BodyAngularVelocity.AngularVelocity = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.MaxTorque = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.P = -9e9
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
-            BodyAngularVelocity.AngularVelocity = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.MaxTorque = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.P = -9e9
             end
         end
         workspace.FallenPartsDestroyHeight = 0/0
@@ -163,8 +161,6 @@ for _,v in ipairs(WhitelistedPlayers) do
             wtf(it)
         else
         end
-        BodyAngularVelocity:Destroy()
-        BodyGyro:Destroy()
         for _,x in next, Character:GetDescendants() do
             if x:IsA("BasePart") then
                 x.Velocity,x.RotVelocity = Vector3.new(),Vector3.new()
