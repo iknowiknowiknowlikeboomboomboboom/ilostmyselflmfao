@@ -165,17 +165,17 @@ for _,v in ipairs(WhitelistedPlayers) do
         BV.Velocity = Vector3.new(-9e99,9e99,-9e99)
         BV.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
 
-        local BodyGyro = Instance.new("BodyGyro", LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+        local BodyGyro = Instance.new("BodyGyro")
         BodyGyro.CFrame = CFrame.new(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position)
-        BodyGyro.D = -8e88
+        BodyGyro.D = -8e8
         BodyGyro.MaxTorque = Vector3.new(-9e9, 9e9, -9e9)
-        BodyGyro.P = 9e99
-        local BodyPosition = Instance.new("BodyPosition", LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
+        BodyGyro.P = 9e9
+        local BodyPosition = Instance.new("BodyPosition")
 
         BodyPosition.Position = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
-        BodyPosition.D = -8e88
+        BodyPosition.D = -8e8
         BodyPosition.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
-        BodyPosition.P = 9e99
+        BodyPosition.P = 9e9
 
         if sorry and please then
             if (sorry.CFrame.p - please.CFrame.p).Magnitude > 5 then
