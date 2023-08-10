@@ -144,13 +144,11 @@ for _,v in ipairs(WhitelistedPlayers) do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5523, 39, -17129)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
+            RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
+            BodyAngularVelocity.AngularVelocity = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.MaxTorque = Vector3.new(-9e9, 9e9, -9e9) BodyAngularVelocity.P = -9e9
             end
         end
         workspace.FallenPartsDestroyHeight = 0/0
-        local BV = Instance.new("BodyVelocity")
-        BV.Parent = RootPart
-        BV.Velocity = Vector3.new(-9e9,9e9,-9e9)
-        BV.MaxForce = Vector3.new(1/0, 1/0, 1/0)
         if sorry and please then
             if (sorry.CFrame.p - please.CFrame.p).Magnitude > 5 then
                 wtf(please)
@@ -165,7 +163,8 @@ for _,v in ipairs(WhitelistedPlayers) do
             wtf(it)
         else
         end
-        BV:Destroy()
+        BodyAngularVelocity:Destroy()
+        BodyGyro:Destroy()
         for _,x in next, Character:GetDescendants() do
             if x:IsA("BasePart") then
                 x.Velocity,x.RotVelocity = Vector3.new(),Vector3.new()
