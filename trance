@@ -1,3 +1,5 @@
+repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer.Character or game.Players.LocalPlayer:WaitForChild("Character")
+
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
 Settings = {ServerHops = 5, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
 Blacklist, kroneUserids = {}, {4710732523, 354902977}
@@ -48,7 +50,28 @@ if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R
 
 local CF = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 local numb = 0
+
+local Nearby = function(TP, WP)
+    local WC, TC = WP["Character"] or nil, TP["Character"] or nil;
+    if WC and TC then
+        local WPS, TPS = WC["PrimaryPart"]["Position"] or nil, TC["PrimaryPart"]["Position"] or nil;
+        if WPS and TPS then
+            return ((WPS - TPS)["magnitude"] <= Settings["Distance"])
+        else
+            return false;
+        end;
+    end; return false;
+end;
+
 local function shhhlol(TargetPlayer)
+for _,v in ipairs(WhitelistedPlayers) do
+        local WP = table.find(WhitelistedPlayers, tostring(v.Userid)) or nil;
+        if WP and Nearby(Player, WP) then
+            return;
+        end;
+    end;
+
+
     local Character = LocalPlayer.Character
     local Humanoid = Character:FindFirstChildOfClass("Humanoid")
     local RootPart = Humanoid.RootPart
