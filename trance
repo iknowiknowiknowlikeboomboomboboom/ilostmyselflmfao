@@ -39,15 +39,6 @@ local function delayAndTeleport()
 end
 
 coroutine.wrap(delayAndTeleport)()
-repeat task.wait()
-    if game.Players.LocalPlayer and not game.Players.LocalPlayer.Character then
-        repeat
-            task.wait()
-        until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
-    elseif not game:IsLoaded() then
-        game.Loaded:Wait()
-    end
-until true
 
 
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
