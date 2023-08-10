@@ -152,7 +152,7 @@ for _,v in ipairs(WhitelistedPlayers) do
                 end
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
             if game.PlaceId == 417267366 then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5524, 37, -17127)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5524, 36, -17126)
             RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
@@ -167,13 +167,13 @@ for _,v in ipairs(WhitelistedPlayers) do
 
         local BodyGyro = Instance.new("BodyGyro", LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
         BodyGyro.CFrame = CFrame.new(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position)
-        BodyGyro.D = 8e8
+        BodyGyro.D = -8e88
         BodyGyro.MaxTorque = Vector3.new(-9e9, 9e9, -9e9)
         BodyGyro.P = 9e99
         local BodyPosition = Instance.new("BodyPosition", LocalPlayer.Character:FindFirstChild("HumanoidRootPart"))
 
         BodyPosition.Position = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
-        BodyPosition.D = 8e8
+        BodyPosition.D = -8e88
         BodyPosition.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
         BodyPosition.P = 9e99
 
