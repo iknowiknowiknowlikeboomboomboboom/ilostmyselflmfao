@@ -152,7 +152,7 @@ for _,v in ipairs(WhitelistedPlayers) do
                 end
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
             if game.PlaceId == 417267366 then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5524, 36, -17126)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5524, 36, -17126.50)
             RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
