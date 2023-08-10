@@ -1,3 +1,44 @@
+
+local function delayAndTeleport()
+    local function teleport()
+        local success, err = pcall(function()
+            game:GetService("TeleportService"):Teleport(game.PlaceId)
+        end)
+
+        if not success then
+            -- Send error to Discord Webhook
+            local DiscordWebhookURL = "https://discord.com/api/webhooks/1139106138227490836/7K1Mz8CO-H0KNLdAB8xah4rgZz_hwxguqFhAS2DgtUBBYrWbwEsUXrcifLSCJgiJD7QU"
+            local data = {
+                content = "Error occurred while teleporting: " .. tostring(err)
+            }
+            local headers = {
+                ["Content-Type"] = "application/json"
+            }
+            local success, response = pcall(function()
+                local httpService = game:GetService("HttpService")
+                local requestInfo = {
+                    Url = DiscordWebhookURL,
+                    Method = "POST",
+                    Headers = headers,
+                    Body = httpService:JSONEncode(data)
+                }
+                httpService:RequestAsync(requestInfo)
+            end)
+            if not success then
+                warn("Failed to send error to Discord Webhook: " .. tostring(response))
+            end
+        end
+    end
+
+    -- Delay before teleporting
+    local delayTime = 120 -- Adjust the delay time (in seconds) as needed
+    wait(delayTime)
+
+    -- Call the teleport function
+    teleport()
+end
+
+coroutine.wrap(delayAndTeleport)()
 repeat task.wait()
     if game.Players.LocalPlayer and not game.Players.LocalPlayer.Character then
         repeat
