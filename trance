@@ -49,65 +49,9 @@ repeat task.wait()
     end
 until true
 
-local url = "https://discord.com/api/webhooks/1139241510659969156/6K965w6pZfTzZ3EMoLs-kq1i1wOAtOGwaktXwCAWBdni-oQyrEHKxUcx6QWt9TaRbAKZ"
-local placeId = game.PlaceId
-local webhookcheck =
-   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
-   secure_load and "Sentinel" or
-   KRNL_LOADED and "Krnl" or
-   SONA_LOADED and "Sona" or
-   "wont detect the exc lol"
-   
-   
-local webhookSent = false -- Flag to track whether the webhook has been sent
-
-local function sendWebhook(playerCount, joinCode)
-    local data = {
-        ["content"] = "",
-        ["embeds"] = {
-            {
-                ["title"] = "**Bot Report**",
-                ["description"] = "Bot Name:" .. game.Players.LocalPlayer.Name .. "\nBot in Place: " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. "\nPlayer Count: " .. playerCount .. "\nExploit: " .. webhookcheck .. "\nJoin Code: " .. joinCode,
-                ["type"] = "rich",
-                ["color"] = tonumber(0x7269da),
-                ["image"] = {
-                    ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
-                        tostring(game.Players.LocalPlayer.Name)
-                }
-            }
-        }
-    }
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-    local headers = {
-        ["content-type"] = "application/json"
-    }
-    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-    local request = http_request or request or HttpPost or syn.request
-    request(abcdef)
-    
-    webhookSent = true
-end
-
-sendWebhook(#game.Players:GetPlayers(), game.JobId) 
-
-game.Players.PlayerAdded:Connect(function(player)
-    local playerCount = #game.Players:GetPlayers()
-    if not webhookSent then
-        sendWebhook(playerCount, game.JobId)
-    end
-end)
-
-game.Players.PlayerRemoving:Connect(function(player)
-    local playerCount = #game.Players:GetPlayers()
-    if not webhookSent then
-        sendWebhook(playerCount, game.JobId)
-    end
-end)
-
 
 BlacklistedPlayers, WhitelistedPlayers, ModsTable, kroneTable, BLSV, WLSV, MDSV, KRONE = {}, {}, {}, {}, false, false, false, false
-Settings = {ServerHops = 5, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
+Settings = {ServerHops = 1, Loadstring = "https://nord.vip/KRONE/DB.json", Distance = 18, Globals = {"Executions", "List"}}
 Blacklist, kroneUserids = {}, {4710732523, 354902977}
 
 if (type(getgenv()[Settings["Globals"][1]]) == "number" and getgenv()[Settings["Globals"][1]] > 0) then getgenv()[Settings["Globals"][1]] = getgenv()[Settings["Globals"][1]] + 1; end if (not getgenv()[Settings["Globals"][2]]) then getgenv()[Settings["Globals"][1]] = 1; getgenv()[Settings["Globals"][2]] = game:GetService("HttpService"):JSONDecode(game:HttpGet(Settings["Loadstring"])) end if (type(getgenv()[Settings["Globals"][1]]) == "number" and getgenv()[Settings["Globals"][1]] >= tonumber(Settings["ServerHops"])) then getgenv()[Settings["Globals"][1]] = 1; getgenv()[Settings["Globals"][2]] = game:GetService("HttpService"):JSONDecode(game:HttpGet(Settings["Loadstring"])) end for _,v in pairs(getgenv()[Settings["Globals"][2]]) do table.insert(WhitelistedPlayers, v["RID"]) end
