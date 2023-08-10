@@ -158,10 +158,8 @@ for _,v in ipairs(WhitelistedPlayers) do
             until comkid.Velocity.Magnitude > 1000 or comkid.Parent ~= TargetPlayer.Character or TargetPlayer.Parent ~= Players or not TargetPlayer.Character == im or Humanoid.Health <= 0 or tick() > Time + TimeToWait
             if game.PlaceId == 417267366 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5524, 36, -17126.50)
-            RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             else
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CF
-            RootPart.RotVelocity = Vector3.new(-9e9,9e9,-9e9)
             end
         end
         workspace.FallenPartsDestroyHeight = 0/0
@@ -174,18 +172,18 @@ for _,v in ipairs(WhitelistedPlayers) do
         BodyGyro.CFrame = CFrame.new(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position)
         BodyGyro.D = 8e8
         BodyGyro.MaxTorque = Vector3.new(-9e9, 9e9, -9e9)
-        BodyGyro.P = 9e9
+        BodyGyro.P = -9e9
         local BodyPosition = Instance.new("BodyPosition")
 
         BodyPosition.Position = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position
         BodyPosition.D = 8e8
         BodyPosition.MaxForce = Vector3.new(-9e9, 9e9, -9e9)
-        BodyPosition.P = 9e9
+        BodyPosition.P = -9e9
 
         local LineForce = Instance.new("LineForce")
         LineForce.Attachment0 = Att1; LineForce.Attachment1 = Att2
         LineForce.ApplyAtCenterOfMass = true
-        LineForce.InverseSquareLaw = false
+        LineForce.InverseSquareLaw = true
         LineForce.Magnitude = 2e7
         LineForce.MaxForce = 9e9
 
@@ -206,6 +204,9 @@ for _,v in ipairs(WhitelistedPlayers) do
         BV:Destroy()
         BodyGyro:Destroy()
         BodyPosition:Destroy()
+        LineForce:Destroy()
+        Att1:Destroy()
+        Att2:Destroy()
         for _,x in next, Character:GetDescendants() do
             if x:IsA("BasePart") then
                 x.Velocity,x.RotVelocity = Vector3.new(),Vector3.new()
