@@ -161,12 +161,12 @@ local function shhhlol(TargetPlayer)
 
 
             repeat
-            for _,v in ipairs(WhitelistedPlayers) do
-            local WP = table.find(WhitelistedPlayers, tostring(v.Userid)) or nil;
-            if WP and Nearby(Player, WP) then
+            for _,v in next, WhitelistedPlayers do
+        local WP = table.find(WhitelistedPlayers, tostring(v.UserId))
+        if WP and Nearby(Player, WP) then
             return;
-            end;
-            end;
+        end;
+    end;
                 if RootPart and so then
                     if comkid.Velocity.Magnitude < 30 then
                         mmmm(comkid,CFrame.new(0,1.5,0) + so.MoveDirection * comkid.Velocity.Magnitude / 5,CFrame.Angles(math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180), math.random(1, 2) == 1 and math.rad(0) or math.rad(180)))
